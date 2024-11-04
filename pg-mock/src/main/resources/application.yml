@@ -26,8 +26,9 @@ management:
   metrics:
     tags:
       application: pg-mock
-    export:
-      prometheus:
+  prometheus:
+    metrics:
+      export:
         enabled: true
 
 logging:

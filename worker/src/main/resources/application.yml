@@ -53,8 +53,9 @@ management:
   metrics:
     tags:
       application: payment-worker
-    export:
-      prometheus:
+  prometheus:
+    metrics:
+      export:
         enabled: true
 
 logging:

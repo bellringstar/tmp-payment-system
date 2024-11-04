@@ -1,7 +1,6 @@
 spring:
   profiles:
     active: local
-
 ---
 spring:
   config:
@@ -50,8 +49,9 @@ management:
   metrics:
     tags:
       application: payment-api
-    export:
-      prometheus:
+  prometheus:
+    metrics:
+      export:
         enabled: true
 
 logging:
@@ -61,6 +61,9 @@ logging:
     org.hibernate.SQL: DEBUG
     org.hibernate.type: TRACE
 
+pg:
+  server:
+    url: http://localhost:8081
 ---
 spring:
   config:
@@ -87,6 +90,10 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
     show-sql: false
-  redis:
-    host: redis
-    port: 6379
+  data:
+    redis:
+      host: redis
+      port: 6379
+pg:
+  server:
+    url: http://localhost:8081
