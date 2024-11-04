@@ -3,6 +3,7 @@ package com.example.pgmock.service;
 import com.example.pgmock.dto.PaymentApproveRequest;
 import com.example.pgmock.dto.PaymentApproveResponse;
 import com.example.pgmock.dto.PaymentResult;
+import java.time.LocalDateTime;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 public class PaymentService {
 
     public PaymentApproveResponse approvePayment(PaymentApproveRequest request) {
-        return new PaymentApproveResponse(PaymentResult.SUCCESS, request.paymentKey(), request.orderId(), request.amount());
+        return new PaymentApproveResponse(PaymentResult.SUCCESS, request.paymentKey(), request.orderId(),
+                request.amount(), LocalDateTime.now());
     }
 }
