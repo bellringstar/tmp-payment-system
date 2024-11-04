@@ -1,0 +1,5 @@
+rootProject.name = 'payment-system'
+
+include 'payment-api'
+include 'pg-mock'
+include 'worker'
