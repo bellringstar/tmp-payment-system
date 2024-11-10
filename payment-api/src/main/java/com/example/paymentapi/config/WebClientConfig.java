@@ -1,5 +1,6 @@
 package com.example.paymentapi.config;
 
+import java.util.Collections;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +18,12 @@ public class WebClientConfig {
     public WebClient pgWebClient() {
         return WebClient.builder()
                 .baseUrl(pgServerUrl)
-                .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                .defaultHeaders(this::addDefaultHeaders)
                 .build();
+    }
+
+    private void addDefaultHeaders(HttpHeaders headers) {
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
     }
 }
