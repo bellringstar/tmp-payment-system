@@ -27,9 +27,10 @@ public class PaymentResultHandler {
                 .orElseGet(() -> Payment.createInProgress(request));
 
         payment.updateStatus(response.status());
+        paymentRepository.saveAndFlush(payment); // 한 번 플러쉬 -> 이러면 requestSavePurchaseHistory에서 예외 발생해도 롤백 안됨.
         paymentStatusCache.setStatus(response.paymentKey(), response.status());
         /* TODO : worker 서버에 구매내역, 체크인 내역 저장 작업 비동기 요청
-         *  1. 서버에 요청이 실패했다면 어떻게 대응해야 하는가
+         *  1. 서버에 요청이 실패했다면 어떻게 대응해야 하는가?
          *  2. 서버에 요청이 성공했다면 여기서도 후속 처리가 필요할까?
          * */
         workerClient.requestSavePurchaseHistory(new savePurchaseHistoryRequest());

@@ -5,6 +5,8 @@ import com.example.paymentapi.dto.PaymentRequest;
 import com.example.paymentapi.dto.PaymentStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -42,6 +44,7 @@ public class Payment {
 
     @NotNull
     @Column(nullable = false)
+    @Enumerated(value = EnumType.STRING)
     private PaymentStatus paymentStatus;
 
     private String description;
