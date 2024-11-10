@@ -1,7 +1,6 @@
 spring:
   profiles:
     active: local
-
 ---
 spring:
   config:
@@ -43,3 +42,29 @@ spring:
       on-profile: docker
   application:
     name: pg-mock
+
+server:
+  port: 8081
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus,metrics
+  endpoint:
+    health:
+      show-details: always
+    prometheus:
+      enabled: true
+  metrics:
+    tags:
+      application: pg-mock
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+
+logging:
+  level:
+    root: INFO
+    com.example: DEBUG

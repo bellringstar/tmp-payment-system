@@ -10,7 +10,7 @@ spring:
   application:
     name: payment-worker
   datasource:
-    url: jdbc:mysql://localhost:3306/worker_db?useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3306/festival?useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -73,7 +73,7 @@ spring:
   application:
     name: payment-worker
   datasource:
-    url: jdbc:mysql://mysql:3306/worker_db?useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=UTF-8
+    url: jdbc:mysql://mysql:3306/festival?useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=UTF-8
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -96,3 +96,5 @@ spring:
     consumer:
       group-id: payment-worker
       auto-offset-reset: earliest
+server:
+  port: 8082

@@ -38,7 +38,12 @@ public class PaymentResultHandler {
 
     @Transactional
     public void handlePaymentError(PaymentRequest request, Throwable error) {
+        log.error(error.getMessage());
+        log.error("PaymentRequest - key: {}, orderId: {}, amount: {}",
+                request.paymentKey(), request.orderId(), request.amount());
         Payment payment = Payment.createFailed(request, error.getMessage());
+        log.error("Created Payment - status: {}, amount: {}",
+                payment.getPaymentStatus(), payment.getAmount());
         paymentRepository.save(payment);
         paymentStatusCache.setStatus(request.paymentKey(), PaymentStatus.FAILED);
         // TODO: 재시도 로직

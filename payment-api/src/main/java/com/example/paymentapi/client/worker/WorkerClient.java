@@ -1,6 +1,5 @@
 package com.example.paymentapi.client.worker;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatusCode;
@@ -10,12 +9,14 @@ import reactor.core.publisher.Mono;
 
 @Component
 @Slf4j
-@RequiredArgsConstructor
 public class WorkerClient {
 
     private static final String RECORD_URI = "";
-    @Qualifier("workerWebClient")
     private final WebClient webClient;
+
+    public WorkerClient(@Qualifier("workerWebClient") WebClient webClient) {
+        this.webClient = webClient;
+    }
 
     public Mono<savePurchaseHistoryResponse> requestSavePurchaseHistory(savePurchaseHistoryRequest request) {
         return webClient.post()

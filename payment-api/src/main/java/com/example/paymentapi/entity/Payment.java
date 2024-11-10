@@ -42,7 +42,6 @@ public class Payment {
     @Column(nullable = false)
     private BigDecimal amount;
 
-    @NotNull
     @Column(nullable = false)
     @Enumerated(value = EnumType.STRING)
     private PaymentStatus paymentStatus;
@@ -90,12 +89,11 @@ public class Payment {
     }
 
     public void updateStatus(PaymentStatus paymentStatus) {
-        validateStatus(paymentStatus);
         this.paymentStatus = paymentStatus;
     }
 
     private void validateStatus(PaymentStatus expectedStatus) {
-        if (this.paymentStatus != expectedStatus) {
+        if (this.paymentStatus == expectedStatus) {
             throw new IllegalStateException("Invalid payment status transition");
         }
     }
