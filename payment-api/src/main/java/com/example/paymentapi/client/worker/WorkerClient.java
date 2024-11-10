@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono;
 @Slf4j
 public class WorkerClient {
 
-    private static final String RECORD_URI = "";
+    private static final String RECORD_URI = "/api/v1/worker/purchaseHistory";
     private final WebClient webClient;
 
     public WorkerClient(@Qualifier("workerWebClient") WebClient webClient) {

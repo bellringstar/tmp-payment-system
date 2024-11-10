@@ -29,6 +29,9 @@ public class PgClient {
                 .onStatus(HttpStatusCode::is4xxClientError,
                         response -> Mono.error(new RuntimeException("Invalid request to PG server")))
                 .bodyToMono(PaymentApproveResponse.class)
+                .doOnNext(response -> {
+                    log.debug("Complete response: {}", response);
+                })
                 .doOnSubscribe(subscription ->
                         log.debug("Payment approve request sent - PaymentKey: {}, OrderId: {}",
                                 request.paymentKey(), request.orderId()))
