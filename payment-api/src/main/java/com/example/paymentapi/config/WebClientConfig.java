@@ -1,6 +1,7 @@
 package com.example.paymentapi.config;
 
 import java.util.Collections;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,13 +12,27 @@ import org.springframework.web.reactive.function.client.WebClient;
 @Configuration
 public class WebClientConfig {
 
-    @Value("${pg.server.url}")
+    @Value("${server.pg.url}")
     private String pgServerUrl;
 
+    @Value("${server.worker.url}")
+    private String workerServerUrl;
+
     @Bean
+    @Qualifier("pgWebClient")
     public WebClient pgWebClient() {
+        return createWebClient(pgServerUrl);
+    }
+
+    @Bean
+    @Qualifier("workerWebClient")
+    public WebClient workerWebClient() {
+        return createWebClient(workerServerUrl);
+    }
+
+    public WebClient createWebClient(String baseUrl) {
         return WebClient.builder()
-                .baseUrl(pgServerUrl)
+                .baseUrl(baseUrl)
                 .defaultHeaders(this::addDefaultHeaders)
                 .build();
     }

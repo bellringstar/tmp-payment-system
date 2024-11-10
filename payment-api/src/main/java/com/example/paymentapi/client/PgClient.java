@@ -2,6 +2,7 @@ package com.example.paymentapi.client;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -13,6 +14,7 @@ import reactor.core.publisher.Mono;
 public class PgClient {
 
     private static final String APPROVE_URI = "/api/v1/pg/approve";
+    @Qualifier("pgWebClient")
     private final WebClient webClient;
 
     // PG사 서버로 결제 승인 요청을 보내는 메서드. 비동기 처리
