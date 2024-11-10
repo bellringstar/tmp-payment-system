@@ -1,4 +1,4 @@
-package com.example.paymentapi.client;
+package com.example.paymentapi.client.pg;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

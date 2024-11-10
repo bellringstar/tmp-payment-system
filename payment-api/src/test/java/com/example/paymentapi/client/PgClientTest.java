@@ -1,5 +1,8 @@
 package com.example.paymentapi.client;
 
+import com.example.paymentapi.client.pg.PaymentApproveRequest;
+import com.example.paymentapi.client.pg.PaymentApproveResponse;
+import com.example.paymentapi.client.pg.PgClient;
 import com.example.paymentapi.dto.PaymentStatus;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;

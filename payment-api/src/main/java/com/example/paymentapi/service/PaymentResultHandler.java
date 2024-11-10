@@ -1,7 +1,7 @@
 package com.example.paymentapi.service;
 
 import com.example.paymentapi.cache.PaymentStatusCache;
-import com.example.paymentapi.client.PaymentApproveResponse;
+import com.example.paymentapi.client.pg.PaymentApproveResponse;
 import com.example.paymentapi.dto.PaymentRequest;
 import com.example.paymentapi.dto.PaymentStatus;
 import com.example.paymentapi.entity.Payment;

@@ -1,6 +1,6 @@
 package com.example.paymentapi.entity;
 
-import com.example.paymentapi.client.PaymentApproveResponse;
+import com.example.paymentapi.client.pg.PaymentApproveResponse;
 import com.example.paymentapi.dto.PaymentRequest;
 import com.example.paymentapi.dto.PaymentStatus;
 import jakarta.persistence.Column;

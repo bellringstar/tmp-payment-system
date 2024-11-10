@@ -1,4 +1,4 @@
-package com.example.paymentapi.client;
+package com.example.paymentapi.client.pg;
 
 import com.example.paymentapi.dto.PaymentStatus;
 import java.math.BigDecimal;
