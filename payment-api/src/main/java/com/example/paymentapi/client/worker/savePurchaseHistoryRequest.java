@@ -1,4 +1,4 @@
 package com.example.paymentapi.client.worker;
 
-public record BuyRecordRequest() {
+public record savePurchaseHistoryRequest() {
 }

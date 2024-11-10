@@ -17,7 +17,7 @@ public class WorkerClient {
     @Qualifier("workerWebClient")
     private final WebClient webClient;
 
-    public Mono<BuyRecordResponse> requestPaymentApprove(BuyRecordRequest request) {
+    public Mono<savePurchaseHistoryResponse> requestSavePurchaseHistory(savePurchaseHistoryRequest request) {
         return webClient.post()
                 .uri(RECORD_URI)
                 .bodyValue(request)
@@ -26,6 +26,6 @@ public class WorkerClient {
                         response -> Mono.error(new RuntimeException("worker server error")))
                 .onStatus(HttpStatusCode::is4xxClientError,
                         response -> Mono.error(new RuntimeException("Invalid request to worker server")))
-                .bodyToMono(BuyRecordResponse.class);
+                .bodyToMono(savePurchaseHistoryResponse.class);
     }
 }

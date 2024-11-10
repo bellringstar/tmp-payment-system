@@ -2,6 +2,8 @@ package com.example.paymentapi.service;
 
 import com.example.paymentapi.cache.PaymentStatusCache;
 import com.example.paymentapi.client.pg.PaymentApproveResponse;
+import com.example.paymentapi.client.worker.WorkerClient;
+import com.example.paymentapi.client.worker.savePurchaseHistoryRequest;
 import com.example.paymentapi.dto.PaymentRequest;
 import com.example.paymentapi.dto.PaymentStatus;
 import com.example.paymentapi.entity.Payment;
@@ -17,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class PaymentResultHandler {
     private final PaymentRepository paymentRepository;
     private final PaymentStatusCache paymentStatusCache;
+    private final WorkerClient workerClient;
 
     @Transactional
     public void handlePaymentSuccess(PaymentRequest request, PaymentApproveResponse response) {
@@ -25,7 +28,11 @@ public class PaymentResultHandler {
 
         payment.updateStatus(response.status());
         paymentStatusCache.setStatus(response.paymentKey(), response.status());
-        //TODO: worker 서버로 구매내역, 체크인 저장 요청
+        /* TODO : worker 서버에 구매내역, 체크인 내역 저장 작업 비동기 요청
+         *  1. 서버에 요청이 실패했다면 어떻게 대응해야 하는가
+         *  2. 서버에 요청이 성공했다면 여기서도 후속 처리가 필요할까?
+         * */
+        workerClient.requestSavePurchaseHistory(new savePurchaseHistoryRequest());
     }
 
     @Transactional
