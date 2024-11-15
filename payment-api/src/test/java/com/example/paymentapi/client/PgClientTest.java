@@ -1,9 +1,9 @@
 package com.example.paymentapi.client;
 
-import com.example.paymentapi.client.pg.PaymentApproveRequest;
-import com.example.paymentapi.client.pg.PaymentApproveResponse;
-import com.example.paymentapi.client.pg.PgClient;
-import com.example.paymentapi.dto.PaymentStatus;
+import com.example.paymentapi.payment.client.pg.PaymentApproveRequest;
+import com.example.paymentapi.payment.client.pg.PaymentApproveResponse;
+import com.example.paymentapi.payment.client.pg.PgClient;
+import com.example.paymentapi.payment.dto.PaymentStatus;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.math.BigDecimal;
