@@ -28,6 +28,6 @@ public interface TicketStockRepository extends JpaRepository<TicketStock, Long> 
     Optional<TicketStock> findByIdAndTicketIdAndMemberId(@Param("id") Long id, @Param("ticketId") Long ticketId,
                                                          @Param("memberId") Long memberId);
 
-    @Query("SELECT CASE WHEN EXISTS (SELECT 1 FROM TicketStock ts WHERE ts.ticket = :ticket AND ts.memberId = :memberId) THEN true ELSE false END")
+    @Query("SELECT CASE WHEN EXISTS (SELECT 1 FROM TicketStock ts WHERE ts.ticket = :ticketId AND ts.memberId = :memberId) THEN true ELSE false END")
     boolean existsByTicketAndMember(Long ticketId, Long memberId);
 }

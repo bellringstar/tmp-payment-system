@@ -1,14 +1,14 @@
 package com.example.paymentapi.ticket.service;
 
 import com.example.paymentapi.payment.dto.TicketValidatorDto;
-import com.example.paymentapi.ticket.ticketvalidator.validator.TicketValidator;
+import com.example.paymentapi.ticket.ticketvalidator.TicketValidator;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Component
+@Service
 @RequiredArgsConstructor
 @Slf4j
 public class TicketValidateService {

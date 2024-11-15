@@ -1,4 +1,4 @@
-package com.example.paymentapi.ticket.ticketvalidator.validator;
+package com.example.paymentapi.ticket.ticketvalidator;
 
 import com.example.paymentapi.payment.dto.TicketValidatorDto;
 
