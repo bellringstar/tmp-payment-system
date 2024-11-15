@@ -9,7 +9,6 @@ public record PaymentRequest(
         String paymentKey,
         @NotBlank(message = "주문 ID는 필수입니다")
         String orderId,
-
         @NotNull(message = "결제 금액은 필수입니다")
         BigDecimal amount,
 

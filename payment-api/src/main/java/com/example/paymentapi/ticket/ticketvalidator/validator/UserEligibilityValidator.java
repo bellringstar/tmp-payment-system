@@ -9,6 +9,7 @@ public class UserEligibilityValidator implements TicketValidator {
 
     @Override
     public boolean validate(TicketValidatorDto dto) {
+        // 구매페이지 진입 즉 대기열을 뚫고 나왔다면 토큰이 존재할 것으로 예정 해당 토큰의 검증이 필요
         return true;
     }
 

@@ -58,4 +58,8 @@ public class Ticket {
 
     @Column(name = "is_deleted", nullable = false)
     private boolean isDeleted;
+
+    public boolean isValidWindow(LocalDateTime time) {
+        return !time.isBefore(this.startSaleTime) && !time.isAfter(endSaleTime);
+    }
 }

@@ -31,8 +31,7 @@ public class PaymentResultHandler {
         paymentRepository.saveAndFlush(payment); // 한 번 플러쉬 -> 이러면 requestSavePurchaseHistory에서 예외 발생해도 롤백 안됨.
         paymentStatusCache.setStatus(response.paymentKey(), response.status());
         /* TODO :
-            1. 티켓 재고 감소 확정
-            2. worker 서버에 구매내역, 체크인 내역 저장 작업 비동기 요청
+            1. worker 서버에 구매내역, 체크인 내역 저장 작업 비동기 요청
          *  - 서버에 요청이 실패했다면 어떻게 대응해야 하는가?
          *  - 서버에 요청이 성공했다면 여기서도 후속 처리가 필요할까?
          * */
@@ -52,5 +51,6 @@ public class PaymentResultHandler {
         paymentRepository.save(payment);
         paymentStatusCache.setStatus(request.paymentKey(), PaymentStatus.FAILED);
         // TODO: 재시도 로직
+        // TODO: 티켓 점유 롤백
     }
 }

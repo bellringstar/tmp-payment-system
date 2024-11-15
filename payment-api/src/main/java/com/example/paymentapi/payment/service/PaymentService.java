@@ -44,7 +44,8 @@ public class PaymentService {
     }
 
     private TicketValidatorDto getValidateDto(PaymentRequest request) {
-        return new TicketValidatorDto(request.paymentKey(), request.orderId(), request.amount(), request.festivalId(),
+        return new TicketValidatorDto(request.paymentKey(), request.orderId(), request.amount(), LocalDateTime.now(),
+                request.festivalId(),
                 request.ticketId(), request.memberId());
     }
 

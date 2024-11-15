@@ -9,6 +9,7 @@ public class StockValidator implements TicketValidator {
 
     @Override
     public boolean validate(TicketValidatorDto dto) {
+        // TODO: skipped lock을 통한 티켓이 존재하는지 확인 후 점유
         return true;
     }
 
