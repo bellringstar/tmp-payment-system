@@ -1,10 +1,12 @@
 package com.example.worker.service;
 
 import com.example.worker.dto.HistorySaveRequest;
+import com.example.worker.dto.HistorySaveResponse;
 import com.example.worker.entity.Checkin;
 import com.example.worker.entity.Purchase;
 import com.example.worker.repository.CheckinRepository;
 import com.example.worker.repository.PurchaseRepository;
+import java.time.LocalDateTime;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -23,12 +25,12 @@ public class HistorySaveService {
     private final CheckinRepository checkinRepository;
 
     @Transactional
-    public boolean savePurchaseHistoryV1(HistorySaveRequest request) {
+    public HistorySaveResponse savePurchaseHistoryV1(HistorySaveRequest request) {
         // 요청이 올 때 마다 단건 저장
         Purchase purchase = Purchase.createPurchased(request.ticketId(), request.memberId(), request.purchaseTime());
         Checkin checkin = Checkin.create(request.festivalId(), request.memberId(), request.ticketId());
         purchaseRepository.save(purchase);
         checkinRepository.save(checkin);
-        return true;
+        return new HistorySaveResponse(true, LocalDateTime.now());
     }
 }

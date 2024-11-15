@@ -1,8 +1,8 @@
-package com.example.paymentapi.client.worker;
+package com.example.worker.dto;
 
 import java.time.LocalDateTime;
 
-public record savePurchaseHistoryResponse(
+public record HistorySaveResponse(
         boolean isSuccess,
         LocalDateTime savedTime
 ) {

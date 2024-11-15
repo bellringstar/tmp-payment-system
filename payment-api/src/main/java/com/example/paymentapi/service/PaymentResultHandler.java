@@ -8,6 +8,7 @@ import com.example.paymentapi.dto.PaymentRequest;
 import com.example.paymentapi.dto.PaymentStatus;
 import com.example.paymentapi.entity.Payment;
 import com.example.paymentapi.repository.PaymentRepository;
+import java.time.LocalDateTime;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -33,7 +34,8 @@ public class PaymentResultHandler {
          *  1. 서버에 요청이 실패했다면 어떻게 대응해야 하는가?
          *  2. 서버에 요청이 성공했다면 여기서도 후속 처리가 필요할까?
          * */
-        workerClient.requestSavePurchaseHistory(new savePurchaseHistoryRequest());
+        workerClient.requestSavePurchaseHistory(new savePurchaseHistoryRequest(1L, 1L, 1L, LocalDateTime.now()))
+                .subscribe();
     }
 
     @Transactional

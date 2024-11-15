@@ -19,6 +19,7 @@ public class WorkerClient {
     }
 
     public Mono<savePurchaseHistoryResponse> requestSavePurchaseHistory(savePurchaseHistoryRequest request) {
+        log.error("worker로 요청 : " + request);
         return webClient.post()
                 .uri(RECORD_URI)
                 .bodyValue(request)
